@@ -1,18 +1,26 @@
 #include <iostream>
 #include <cstring>
+#include <cstdlib>
 using namespace std;
 
 int main() {
 
-    int array2[2][5] = { {1, 2, 3, 4, 5}, {6, 7, 8, 9, 10} };
+    int array2[2][5] = { {1, 2, 3, 4, 5}, {6, 7, 8, 9, 10} }; //на стеке так в Си
 
-    int *ptr1;
-    int **ptr2;
-    int (*ptr3)[5];
+    int *m = new int[3]; // динамический массив в куче С++
+    delete [] m;
+    //оператор new или new [] скрывает malloc и free
 
-    ptr1 = array2; // 1) не работает
-    ptr2 = array2; // 2) не работает
-    ptr3 = array2; // 3) работает
+    //то же самое, но на стеке
+    int n[3] = {1,2,3}; // dereferencing *n
+
+    //то же самое, что в строках 10-11, но в куче
+    {
+        int *p = (int *) malloc(sizeof(int));
+        //code
+        free(p);
+    }
+
 
 
 
