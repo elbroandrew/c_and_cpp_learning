@@ -14,8 +14,9 @@ int main() {
     ptr_arg = &arg;
     ptr = (char *)ptr_arg;
 
-    p = ptr;
+    p = ptr_arg;
     ptr_arg = p; //в 14 - ошибка, в 99 - можно присвоить void to int*
+    *p = 10; // нельзя использовать войд поинтер для работы с ячейками памяти
 
     *ptr = 1;
 
