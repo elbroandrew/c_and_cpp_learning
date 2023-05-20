@@ -5,22 +5,11 @@ using namespace std;
 
 int main() {
 
-    int arg = 777;
-    int *ptr_arg;
-    char *ptr;
+    int *ptr; //указатель ссылается на случайную невыделенную область в памяти
+    *ptr = 1; //поэтому здесь программа завершится с каким-нибудь кодом выхода
+    // Process finished with exit code -1073741819 (0xC0000005)
 
-    void *p; //позволяет присваивать без каста
-
-    ptr_arg = &arg;
-    ptr = (char *)ptr_arg;
-
-    p = ptr_arg;
-    ptr_arg = p; //в 14 - ошибка, в 99 - можно присвоить void to int*
-    *p = 10; // нельзя использовать войд поинтер для работы с ячейками памяти
-
-    *ptr = 1;
-
-    printf("*ptr_arg = %d, arg = %d\n", *ptr_arg, arg); //769
+    printf("*ptr_arg = %d\n", *ptr);
 
     return 0;
 }
