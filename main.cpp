@@ -10,9 +10,9 @@ int main() {
 
     printf("ptr = %u, p = %u\n", ptr, p);
 
-    ptr += p; //error
+    int res = ptr - p;
 
-    printf("ptr = %u\n", ptr);
+    printf("res = %d\n", res);
 
 
     return 0;
