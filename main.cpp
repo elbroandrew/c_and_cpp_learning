@@ -4,13 +4,13 @@ using namespace std;
 
 int main() {
 
-    int g = 4;
-    int *ptr = &g;
+    short g = 4, d = 1;
+    short *ptr = &g;
+    short *p = &d;
 
-    printf("ptr = %u\n", ptr);
+    printf("ptr = %u, p = %u\n", ptr, p);
 
-    ptr /= 2; //деление нельзя
-    ptr *= 3; // умножение нельзя, только сложение.
+    ptr += p; //error
 
     printf("ptr = %u\n", ptr);
 
