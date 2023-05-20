@@ -1,13 +1,17 @@
 #include <iostream>
 
 #define SIZE_BUFFER     5
+
+int buffer[SIZE_BUFFER] = {1, 100, 5}; //чаще всего лучше вынести инициализацию за ф-ию,
+//т.к. копирование элементов происходит, и если много их >1000, то это сильно скажется на скорости работы программы.
+
+
 int main() {
 
-    int buffer[SIZE_BUFFER]; // можно иниц нулём, лучше вот так ={0}, чем просто ={} .
-    buffer = {1,2,3,4,5}; // error, это уже присваивание, так нельзя. Только могу присвоить значение buffer[5] = 244;
-    size_t b = sizeof(buffer);
     size_t len = sizeof(buffer) / sizeof(int);
-    printf("%zu", len);
+    for(int i = 0; i < len; ++i){
+        printf("%d, ", buffer[i]);
+    }
 
     return 0;
 }
