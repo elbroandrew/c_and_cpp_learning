@@ -1,15 +1,24 @@
 #include <iostream>
-#include <cstring>
-#include <cstdlib>
+
 using namespace std;
 
 int main() {
 
-    int *ptr; //указатель ссылается на случайную невыделенную область в памяти
-    *ptr = 1; //поэтому здесь программа завершится с каким-нибудь кодом выхода
-    // Process finished with exit code -1073741819 (0xC0000005)
+    int g = 4;
+    int *ptr = &g;
 
-    printf("*ptr_arg = %d\n", *ptr);
+    printf("ptr = %u\n", ptr);
+
+    ptr++; //сдвигает указатель на следующую порцию данных, определенную типом.
+    // в данном случае INT = 4 байтам, значит сдвинется указатель на 4 байта.
+    // 2973760516 + 4 = 2973760520
+
+    printf("ptr = %u\n", ptr);
+
+    /* output:
+    ptr = 2973760516
+    ptr = 2973760520
+    */
 
     return 0;
 }
