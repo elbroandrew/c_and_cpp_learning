@@ -11,9 +11,10 @@ int buffer[SIZE_BUFFER] = {1, 100, 5};
 mutex mu;
 
 void shared_print(string msg, int id){
-    mu.lock();
+    lock_guard<mutex> guard(mu); //RAII technique, lock_guard allow mutex not to be blocked if code throws exception between 'lock'/'unlock'
+    //mu.lock();
     cout << msg << id << endl;
-    mu.unlock();
+    //mu.unlock();
 }
 
 
