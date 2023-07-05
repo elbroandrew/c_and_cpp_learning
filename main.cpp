@@ -7,11 +7,12 @@ int buffer[SIZE_BUFFER] = {1, 100, 5}; //чаще всего лучше выне
 
 
 int main() {
-
-    size_t len = sizeof(buffer) / sizeof(int);
-    for(int i = 0; i < len; ++i){
-        printf("%d, ", buffer[i]);
+    // simple iterator like in python, it is a pointer
+    int *p;
+    for(p = &buffer[0]; p <= &buffer[4]; p++){
+        printf("%d\n", *p);
     }
+
 
     return 0;
 }
