@@ -1,25 +1,36 @@
 #include <iostream>
 #include <thread>
+#include <mutex>
 
 using namespace std;
 
 #define SIZE_BUFFER     5
 
-int buffer[SIZE_BUFFER] = {1, 100, 5}; //чаще всего лучше вынести инициализацию за ф-ию,
-//т.к. копирование элементов происходит, и если много их >1000, то это сильно скажется на скорости работы программы.
+int buffer[SIZE_BUFFER] = {1, 100, 5};
+
+mutex mu;
+
+void shared_print(string msg, int id){
+    mu.lock();
+    cout << msg << id << endl;
+    mu.unlock();
+}
+
 
 void function_1(){
-    cout << "run from thread 1" << endl;
+    for (int i = 0; i > -100; --i) {
+        shared_print(string("From t1: "), i);
+    }
 }
 
 int main() {
 
-    thread t1(function_1); // t1 starts running
-    //t1.join(); // main thread waits for t1
-    t1.detach(); //behaves like a daemon process
+    thread t1(function_1);
 
+    for (int i = 0; i < 100; ++i) {
+        shared_print(string("From main: "), i);
+    }
 
-
-
+    t1.join();
     return 0;
 }
